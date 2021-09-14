@@ -1,6 +1,6 @@
 """
 Name: Taylor Mills
-<filename>.py
+mean.py
 
 Problem: <Enter description of the codes function>
 
@@ -10,4 +10,3 @@ I certify that this assignment is entirely my own work.
 
 
 def main():
-    print("docstring")
