@@ -1,9 +1,15 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Name: Taylor Mills
+lab4.py
+
+Problem: Graphic Accumulations and displaying them
+
+Certificate of Authenticity:
+I certify that this assignment is entirely my own work.
 """
 
 from graphics import *
+import math
 
 
 def squares():
@@ -30,11 +36,11 @@ def squares():
 
     # create a space to instruct user
     inst_pt = Point(width / 2, height - 10)
-    instructions = Text(inst_pt, "Click to move circle")
+    instructions = Text(inst_pt, "Click to move square")
     instructions.draw(win)
 
     # builds a circle
-    shape = Circle(Point(50, 50), 20)
+    shape = Rectangle(Point(40, 40), Point(20, 20))
     shape.setOutline("red")
     shape.setFill("red")
     shape.draw(win)
@@ -48,10 +54,16 @@ def squares():
         # point where the user clicked
         dx = p.getX() - c.getX()
         dy = p.getY() - c.getY()
+        new = shape.clone()
+        new.move(dx, dy)
+        new.draw(win)
         shape.move(dx, dy)
 
     win.getMouse()
     win.close()
+
+
+squares()
 
 
 def rectangle():
@@ -62,7 +74,102 @@ def rectangle():
          Print the perimeter and area of the rectangle.
     Formulas: area = (length)(width)   and    perimeter = 2(length+width)
     """
+
+    # opening window
+    width = 400
+    height = 400
+    win = GraphWin("rectangle", width, height)
+
+    # getting corners of triangle from user
+    p1 = win.getMouse()
+    p1.draw(win)
+    p2 = win.getMouse()
+    p2.draw(win)
+
+    # drawing the rectangle
+    tangle = Rectangle(p1, p2)
+    tangle.draw(win)
+
+    px1 = p1.getX()
+    px2 = p2.getX()
+    py1 = p1.getY()
+    py2 = p2.getY()
+    length = px2 - px1
+    width = py2 - py1
+
+    perimeter = 2 * (length + width)
+    area = length * width
+
+    inst_pt = Point(200, 200)
+    instructions = Text(inst_pt, "perimeter")
+    instructions.draw(win)
+
+    inst_pt = Point(200, 250)
+    instructions = Text(inst_pt, "area")
+    instructions.draw(win)
+
+    inst_pt = Point(250, 200)
+    instructions = Text(inst_pt, perimeter)
+    instructions.draw(win)
+
+    inst_pt = Point(250, 250)
+    instructions = Text(inst_pt, area)
+    instructions.draw(win)
+
+    # closing window
+    win.getMouse()
+    win.close()
+
     pass
+
+
+rectangle()
+
+
+def circle():
+    win = GraphWin("circle", 400, 400)
+    p1 = win.getMouse()
+    p2 = win.getMouse()
+    px1 = p1.getX()
+    py1 = p1.getY()
+    px2 = p2.getX()
+    py2 = p2.getY()
+    d1 = (px2 - px1)**2
+    d2 = (py2 - py1)**2
+    d3 = d1 + d2
+    distance = math.sqrt(d3)
+    circle1 = Circle(p1, distance)
+    circle1.setOutline("red")
+    circle1.setFill("red")
+    circle1.draw(win)
+
+    # to print radius
+    inst_pt = Point(250, 250)
+    instructions = Text(inst_pt, distance)
+    instructions.draw(win)
+
+    win.getMouse()
+    win.close()
+
+
+circle()
+
+
+def pi2():
+    n = eval(input("number of terms:"))
+    pi = 1
+    pi1 = 1
+    switch = 0
+    for i in range(1, n + 1, 2):
+        x = 4/n
+        pi = pi + (x * -1)
+    for i in range(2, n, 2):
+        x = 4/n
+        pi1 = pi1 + x
+    print(pi + pi1)
+
+
+pi2()
 
 
 def main():
