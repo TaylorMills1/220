@@ -18,7 +18,7 @@ def main():
     sum1 = 0
     sum2 = 0
     sum3 = 1
-    for i in range(1, variables+1):
+    for _ in range(1, variables+1):
         new = eval(input("enter variable: "))
         sum1 = new**2 + sum1
         sum2 = (1 / new) + sum2
