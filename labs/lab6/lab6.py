@@ -9,7 +9,7 @@ def name_reverse():
     Read a name in first-last order and display it in last-comma-first order.
     """
     name = input('Enter First and Last Name: ')
-    first, last = name.split()
+    first, last = name.split(" ")
     flip = ','.join([last, first])
     print(flip)
 
