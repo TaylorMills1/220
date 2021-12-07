@@ -48,7 +48,6 @@ def game_won(board, piece):
 
     return False
 
-
 def over(board):
     if game_won(board, "x"):
         return True
